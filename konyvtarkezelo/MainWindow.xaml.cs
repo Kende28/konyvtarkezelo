@@ -31,6 +31,8 @@ namespace konyvtarkezelo
         public MainWindow()
         {
             InitializeComponent();
+            cb_genre.ItemsSource = mufajok;
+            cb_genre.SelectedItem = mufajok[0];
             Beolvas("olvasok.txt");
         }
 
@@ -39,7 +41,7 @@ namespace konyvtarkezelo
             if (File.Exists(file))
             {
                 StreamReader sr = new StreamReader(file);
-                if (sr.EndOfStream!)
+                if (!sr.EndOfStream && sr.ReadLineAsync().Result != null && sr.ReadLineAsync().Result != "")
                 {
                     string[] data = sr.ReadLine().Split(";");
                     List<string> notif = data[3].Split(",").ToList<string>();
@@ -47,7 +49,37 @@ namespace konyvtarkezelo
                     olvasok.Add(newOlvaso);
                 }
             }
+            lb_result.ItemsSource = olvasok;
         }
 
+        private void btn_save_Click(object sender, RoutedEventArgs e)
+        {
+            lb_result.ItemsSource = olvasok;
+            List<string> notif = new List<string>();
+            string member = "";
+            foreach (var item in sp_notif.Children)
+            {
+                if (item is CheckBox cb && cb.IsChecked == true)
+                {
+                    notif.Add(cb.Content.ToString());
+                }
+            }
+            foreach (var item in sp_member.Children)
+            {
+                if (item is RadioButton rb && rb.IsChecked == true)
+                {
+                    member = rb.Content.ToString();
+                }
+            }
+            Olvaso newOlvaso = new Olvaso(tb_nev.Text, int.Parse(tb_kor.Text), cb_genre.SelectedItem.ToString(), notif, member);
+            tb_success.Text = "Sikeres mentés";
+            olvasok.Add(newOlvaso);
+            StreamWriter sw = new StreamWriter("olvasok.txt",true, Encoding.UTF8);
+            foreach (var item in olvasok)
+            {
+                sw.WriteLine(item.ToString());
+            }
+            sw.Close();
+        }
     }
 }

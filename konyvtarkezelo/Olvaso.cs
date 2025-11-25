@@ -24,8 +24,8 @@ namespace konyvtarkezelo
 
         public override string ToString()
         {
-            string notif = string.Join(", ", Notifications);
-            return $"{Name};{Age};{Genre};{notif};{Membership}";
+            string notif = string.Join(",", Notifications);
+            return $"{Name};{Age};{Genre};{notif};{Membership};";
         }
     }
 }
