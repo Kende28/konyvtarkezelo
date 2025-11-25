@@ -17,28 +17,30 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Név" FontFamily="Cooper Black" FontSize="36" Grid.Row="0" Grid.Column="0"/>
-        <TextBox Grid.Column="0" Grid.Row="0" Margin="0,84,0,66" Height="67" />
-        <TextBox Grid.Column="0" Grid.Row="0" InputMethod.InputScope="Number" Margin="0,150,0,0"/>
+        <Label Content="Név" FontFamily="Cooper Black" FontSize="30" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="tb_nev" Grid.Column="0" Grid.Row="0" Margin="0,40,0,120" />
+        <Label Content="Életkor" FontFamily="Cooper Black" FontSize="30" Grid.Row="0" Grid.Column="0" Margin="0,95,0,60"/>
+        <TextBox x:Name="tb_kor" Grid.Column="0" Grid.Row="0" InputMethod.InputScope="Number" Margin="0,140,0,20" />
 
-
-        <ComboBox Grid.Column="1" Grid.Row="0"/>
+        <Label Content="Műfaj" FontFamily="Cooper Black" FontSize="30" Grid.Row="0" Grid.Column="1" />
+        <ComboBox x:Name="cb_genre" Grid.Column="1" Grid.Row="0" Margin="0,50,0,0"/>
 
         <Label Content="Hírek!" FontFamily="Cooper Black" FontSize="36" Grid.Row="0" Grid.Column="2"/>
-        <StackPanel x:Name="sp_feltet" Grid.Row="0" Grid.Column="2" Margin="0,50,0,0" >
+        <StackPanel x:Name="sp_notif" Grid.Row="0" Grid.Column="2" Margin="0,50,0,0" >
             <CheckBox Content="Hírlevél" FontSize="20" FontFamily="Times New Roman"/>
             <CheckBox Content="SMS értesítés" FontSize="20" FontFamily="Times New Roman"/>
         </StackPanel>
 
-        <Label Content="Hírek!" FontFamily="Cooper Black" FontSize="36" Grid.Row="1" Grid.Column="0"/>
-        <StackPanel x:Name="sp_atvetel" Grid.Row="1" Grid.Column="0" Margin="0" >
+        <Label Content="Tagság típus" FontFamily="Cooper Black" FontSize="36" Grid.Row="1" Grid.Column="0"/>
+        <StackPanel x:Name="sp_member" Grid.Row="1" Grid.Column="0" Margin="0,50,0,0" >
             <RadioButton Content="Normál" FontFamily="Times New Roman" FontSize="20"/>
             <RadioButton Content="Diák" FontFamily="Times New Roman" FontSize="20"/>
             <RadioButton Content="Nyugdíjas" FontFamily="Times New Roman" FontSize="20"/>
         </StackPanel>
 
-        <Button x:Name="btn_rendel" Content="Mentés" Grid.Column="1" Grid.Row="1" FontSize="36" FontFamily="Cooper Black" />
+        <Button x:Name="btn_save" Content="Mentés" Grid.Column="1" Grid.Row="1" FontSize="36" FontFamily="Cooper Black" />
 
-        <ListBox Grid.Column="2" Grid.Row="1"/>
+        <TextBlock x:Name="tb_success" Grid.Column="2" Grid.Row="1" FontFamily="Times New Roman" FontSize="20" Margin="0,0,0,170"/>
+        <ListBox x:Name="lb_result" Grid.Column="2" Grid.Row="1" FontFamily="Times New Roman" FontSize="20" Margin="0,50,0,0"/>
     </Grid>
 </Window>
